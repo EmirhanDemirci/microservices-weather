@@ -6,7 +6,7 @@ namespace CloudWeather.Temperature.DataAccess
         public TemperatureDbContext() { }
         public TemperatureDbContext(DbContextOptions opts) : base(opts) { }
 
-        public DbSet<Temperature> TemperatureSet { get; set; }
+        public DbSet<Temperature> Temperature { get; set; }
 
         //Calling this before creating the table to apply snakecase identity
         protected override void OnModelCreating(ModelBuilder modelBuilder)
