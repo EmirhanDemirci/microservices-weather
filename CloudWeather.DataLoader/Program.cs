@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
 
-IConfiguration config  = new ConfigurationBuilder().AddJsonFile("appsettings.json").AddEnvironmentVariables().Build();
+IConfiguration config  = new ConfigurationBuilder().AddJsonFile("appSettings.json").AddEnvironmentVariables().Build();
 
 var serviceConfig = config.GetSection("Services");
 
@@ -13,6 +13,11 @@ var tempServicePort = tempServiceConfig["Port"];
 var precipServiceConfig = serviceConfig.GetSection("Precipitation");
 var precipServiceHost = precipServiceConfig["Host"];
 var precipServicePort = precipServiceConfig["Port"];
+
+//debug purposes
+Console.WriteLine($"precip config:http://{precipServiceHost}:{precipServicePort}");
+Console.WriteLine($"temp config:http://{tempServiceHost}:{tempServicePort}");
+
 
 var zipCodes = new List<string>
 {
