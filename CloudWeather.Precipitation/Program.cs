@@ -14,8 +14,9 @@ builder.Services.AddDbContext <PrecipDbContext>(
 
 var app = builder.Build();
 
-app.MapGet("/observation/{zip}", async(string zip, [FromQuery] int? days, PrecipDbContext db) => {
-    if (days == null || days < 1 || days > 30) {
+app.MapGet("/observation/{zip}", async (string zip, [FromQuery] int? days, PrecipDbContext db) => {
+    if (days == null || days < 1 || days > 30) 
+    {
         return Results.BadRequest("Please provide a 'days' query parameter between 1 and 30");
     }
     var startDate = DateTime.UtcNow - TimeSpan.FromDays(days.Value);
@@ -32,5 +33,5 @@ app.MapPost("/observation", async (Precipitation precip, PrecipDbContext db) =>
     await db.AddAsync(precip);
     await db.SaveChangesAsync();
 });
- 
+  
 app.Run();

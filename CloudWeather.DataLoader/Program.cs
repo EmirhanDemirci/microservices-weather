@@ -88,7 +88,7 @@ void PostPrecip(int lowTemp, string zip, DateTime day, HttpClient precipitationH
         };
     }
 
-    var precipResponse = precipitationHttpClient.PostAsJsonAsync("observation", precipServicePort).Result;
+    var precipResponse = precipitationHttpClient.PostAsJsonAsync("observation", precipitation).Result;
 
     if (precipResponse.IsSuccessStatusCode) 
     {
